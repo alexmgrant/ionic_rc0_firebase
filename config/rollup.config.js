@@ -2,6 +2,7 @@ var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
 var globals = require('rollup-plugin-node-globals');
 var builtins = require('rollup-plugin-node-builtins');
+var replace = require('rollup-plugin-replace');
 var json = require('rollup-plugin-json');
 
 // https://github.com/rollup/rollup/wiki/JavaScript-API
@@ -54,7 +55,13 @@ var rollupConfig = {
       extensions: ['.js']
     }),
     globals(),
-    json()
+    json(),
+    replace({
+      include: '../node_modules/firebase/firebase.js',
+      values: {
+        'eval(' : '[eval][0]('
+      }
+    })
   ]
 
 };
