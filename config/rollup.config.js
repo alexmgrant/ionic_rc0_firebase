@@ -40,7 +40,8 @@ var rollupConfig = {
     commonjs({
       include: [
         'node_modules/rxjs/**',
-        'node_modules/firebase/**'
+        'node_modules/firebase/**',
+        'node_modules/lodash/**'
       ],
       namedExports: {
         'node_modules/firebase/firebase.js': ['initializeApp', 'auth', 'database']
